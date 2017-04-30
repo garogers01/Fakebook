@@ -29,6 +29,20 @@ router.get('/settings/:email/:personName', function (req, res, next) {
 
 router.post('/settings/:email/:personName', function (req, res, next) {
   usersDb.addInterestToUser(req.params.email, req.body.text, function (err, result) {
+       usersDb.deleteInterestFromUser(req.params.email, req.body.delete, function (err2, result) {
+       if (err) {
+        res.send('error' + err);
+      } else {
+        
+        res.redirect('/settings/' + req.params.email + '/' + req.params.personName);
+      }
+      });  
+  });  
+
+});
+
+/*router.deletePost('/settings/:email/:personName', function (req, res, next) {
+  usersDb.deleteInterestFromUser(req.params.email, req.body.delete, function (err, result) {
        if (err) {
         res.send('error' + err);
       } else {
@@ -37,6 +51,6 @@ router.post('/settings/:email/:personName', function (req, res, next) {
       }
   });  
 
-});
+});*/
 
 module.exports = router;
