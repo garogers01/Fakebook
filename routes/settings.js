@@ -28,7 +28,14 @@ router.get('/settings/:email/:personName', function (req, res, next) {
 });
 
 router.post('/settings/:email/:personName', function (req, res, next) {
-
+  usersDb.addInterestToUser(req.params.email, req.body.text, function (err, result) {
+       if (err) {
+        res.send('error' + err);
+      } else {
+        
+        res.redirect('/settings/' + req.params.email + '/' + req.params.personName);
+      }
+  });  
 
 });
 
