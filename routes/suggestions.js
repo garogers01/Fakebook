@@ -19,7 +19,8 @@ var userFriends = [];
 
         userFriends.push({
           personName: friends[i].personName,
-          email: friends[i].email
+          email: friends[i].email,
+          friends: friends[i].friends
         });
 
 
@@ -44,11 +45,16 @@ var userFriends = [];
 
           }
 
+          var theFriends = [];
+          if (users[j].friends) {
+            theFriends = users[j].friends;
+          }
+
           if (!isFriends) {
            notFriends.push({
             personName: users[j].personName,
             email: users[j].email,
-            friends: users[j].friends
+            friends: theFriends
           });
 
          }
@@ -56,9 +62,25 @@ var userFriends = [];
 
        }
 
+       var toSuggest = [];
+       for (var t = 0; t < notFriends.length; t++) {
+        var count = 0;
+        for (var s = 0; s < theFriends.length; s++) {
+          for (var u = 0; u < friends.length; u++) {
+            if (theFriends[s].email == friends[u].email) {
+              count++;
+            }
+          }
+        }
+        if (count >= 2) {
+           toSuggest.push({
+            personName: notFriends[t].personName,
+            email: notFriends[t].email
+          });
+        }
+       }
 
-
-       req.session.allSuggestions = notFriends;
+       req.session.allSuggestions = toSuggest;
        res.render('suggestions', {
         errorMessage: req.session.errorMessage,
         personName: req.session.personName,
