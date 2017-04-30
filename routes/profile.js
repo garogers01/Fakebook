@@ -14,7 +14,8 @@ router.get('/profile/:email/:personName', function (req, res, next) {
     usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
       req.session.usersFriends = friends;
       req.session.isFriends = false;
-      var listOfFriends = req.session.usersFriends;
+      var listOfFriends = friends;
+    
       for (var i = 0; i < listOfFriends.length; i++) {
         if (listOfFriends[i].email == req.params.email) {
           req.session.isFriends = true;

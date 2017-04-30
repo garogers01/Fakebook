@@ -43,6 +43,8 @@ var friendsRouter = require('./routes/friends');
 app.use('/', friendsRouter);
 var feedRouter = require('./routes/feed');
 app.use('/', feedRouter);
+var suggestionsRouter = require('./routes/suggestions');
+app.use('/', suggestionsRouter);
 
 app.get('/userHomePage', function (req, res) {
   if (!req.session.email || req.session.email === '') {
@@ -71,23 +73,22 @@ app.get('/register', function (req, res) {
 
 app.post('/register', function (req, res) {
   User.addUser(req.body.personName, req.body.email, req.body.password, function (err) {
-    if (err) {
-      res.send('error' + err);
-    } else {
-      req.session.personName = req.body.personName;
-      req.session.email = req.body.email;
-      req.session.usersFriends = [];
-      req.session.homePosts = [];
+    
+      
       User.findUser(req.body.email, function (err2, user) {
         if (err2) {
           res.send('error' + err);
         } else {
+          req.session.personName = req.body.personName;
+      req.session.email = req.body.email;
+      req.session.usersFriends = [];
+      req.session.homePosts = [];
           req.session.user = user;
-          console.log(req.session.user.personName);
+          res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
         }
       });
-      res.redirect('/userHomePage');
-    }
+    
+    
   });
 });
 
