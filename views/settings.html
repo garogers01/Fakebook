@@ -6,22 +6,22 @@
   <li><%- link_to("View Friends", '/friends/'+email+'/'+userName) %></li>
    <li><a href="/all">View Everyone</a></li>
    <li><%- link_to("View suggestions", '/suggestions/'+email+'/'+userName) %></li>
-    <li><%- link_to("Settings", '/settings/'+email+'/'+userName) %></li>
+      <li><%- link_to("Settings", '/settings/'+email+'/'+userName) %></li>
    <li><a href="/logout">Logout</a></li>
    </ul>
-<h1>Welcome <%= personName %>! </h1>
+<h1>Settings</h1>
  </div>
 
 <div id="nav">
 <form method="post">
-  <p>Add Post<br>
+  <p>Add Interests<br>
   <textarea name="text"></textarea></p>
   <p><input type="submit">
   </form>
 <div id="nav2"></div>
 
-  <% for(var i=0; i < homePosts.length; i++) {%>
-  <div id="array-index-<%= i %>"><%= homePosts[i].personName %> posted: <%=  homePosts[i].text %></div>
+  <% for(var i=0; i < myInterests.length; i++) {%>
+  <div id="array-index-<%= i %>"><%= myInterests[i] %></div>
 <% } %></p>
 
 

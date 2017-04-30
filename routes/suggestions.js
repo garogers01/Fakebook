@@ -27,7 +27,7 @@ var userFriends = [];
 
       }
 
-      req.session.allFriends = userFriends;
+
               
         var notFriends = [];
         for (var j = 0; j < users.length; j++) {
@@ -46,15 +46,22 @@ var userFriends = [];
           }
 
           var theFriends = [];
-          if (users[j].friends) {
-            theFriends = users[j].friends;
+          var currentUser = users[j];
+          
+          for (var z = 0; z < currentUser.friends.length; z++) {
+
+           theFriends.push({
+          personName: currentUser.friends[z].personName,
+          email: currentUser.friends[z].email
+        });
+
           }
 
           if (!isFriends) {
            notFriends.push({
             personName: users[j].personName,
             email: users[j].email,
-            friends: theFriends
+            friends: users[j].friends
           });
 
          }
@@ -65,20 +72,22 @@ var userFriends = [];
        var toSuggest = [];
        for (var t = 0; t < notFriends.length; t++) {
         var count = 0;
-        for (var s = 0; s < theFriends.length; s++) {
-          for (var u = 0; u < friends.length; u++) {
-            if (theFriends[s].email == friends[u].email) {
+     
+        for (var s = 0; s < notFriends[t].friends.length; s++) {
+          for (var u = 0; u < userFriends.length; u++) {
+            if (notFriends[t].friends[s].email == userFriends[u].email) {
               count++;
             }
           }
         }
-        if (count >= 2) {
+           if (count >= 2) {
            toSuggest.push({
             personName: notFriends[t].personName,
             email: notFriends[t].email,
             number: count
           });
         }
+
        }
 
        req.session.allSuggestions = toSuggest;
