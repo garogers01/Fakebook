@@ -4,7 +4,7 @@
   <li><%- link_to("Home", '/feed/'+email+'/'+userName) %></li>
   <li><%- link_to("My Profile", '/profile/'+email+'/'+userName) %></li>
   <li><%- link_to("View Friends", '/friends/'+email+'/'+userName) %></li>
-   <li><a href="/all">View Everyone</a></li>
+   <li><%- link_to("View Everyone", '/all/'+email+'/'+userName) %></li>
    <li><%- link_to("View Suggestions", '/suggestions/'+email+'/'+userName) %></li>
     <li><%- link_to("Settings", '/settings/'+email+'/'+userName) %></li>
    <li><a href="/logout">Logout</a></li>

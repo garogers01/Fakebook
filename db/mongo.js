@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-mongoose.connect('mongodb://localhost/finaasdddhffljprojectwrwtddadasdftabase', function (err) {
+mongoose.connect('mongodb://localhost/finadaddssdddddhffljprojectwrwtddadasdftabase', function (err) {
   if (err && err.message.includes('ECONNREFUSED')) {
     console.log('Error connecting to mongodb database: %s.\nIs "mongod" running?', err.message);
     process.exit(0);

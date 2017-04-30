@@ -48,40 +48,14 @@ app.use('/', suggestionsRouter);
 var settingsRouter = require('./routes/settings');
 app.use('/', settingsRouter);
 
-app.get('/userHomePage', function (req, res) {
-  if (!req.session.email || req.session.email === '') {
-    res.send('You tried to access a protected page');
-  } else {
-    res.render('userHomePage', {
-      personName: req.session.personName,
-      email: req.session.email
-    });
-  }
-});
-
-app.get('/logout', function (req, res) {
-  req.session.personName = '';
-  req.session.email = '';
-  req.session.errorMessage = '';
-  req.session.user = null;
-  req.session.allFriends = [];
-  req.session.homePosts = [];
-  req.session.interests = [];
-  res.render('logout');
-});
-
-app.get('/register', function (req, res) {
-  res.render('createAccount');
-});
-
-app.post('/register', function (req, res) {
-  User.addUser(req.body.personName, req.body.email, req.body.password, function (err) {
-    
-      
+app.get('/userHomePage/:email/:personName', function (req, res) {
       User.findUser(req.body.email, function (err2, user) {
         if (err2) {
-          res.send('error' + err);
+          res.send('error' + err2);
         } else {
+          if (!req.session.email || req.session.email === '') {
+    res.send('You tried to access a protected page');
+  }
           req.session.personName = req.body.personName;
       req.session.email = req.body.email;
       req.session.usersFriends = [];
@@ -91,10 +65,59 @@ app.post('/register', function (req, res) {
           res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
         }
       });
+
+
+});
+
+app.get('/logout', function (req, res) {
+  req.session.personName = '';
+  req.session.email = '';
+  req.session.errorMessage = '';
+  req.session.user = null;
+  req.session.allFriends = [];
+  req.session.homePosts = [];
+  req.session.myInterests = [];
+  res.render('logout');
+});
+
+app.get('/register', function (req, res) {
+  res.render('createAccount');
+});
+
+app.post('/register', function (req, res) {
+  User.findUser(req.body.email, function (err2, user) {
+  User.addUser(req.body.personName, req.body.email, req.body.password, function (err) {
     
+   
+        if (err) {
+          res.send('error' + err);
+        } else {
+             
+          req.session.personName = req.body.personName;
+      req.session.email = req.body.email;
+      req.session.usersFriends = [];
+      req.session.homePosts = [];
+      req.session.interests = [];
+          req.session.user = user;
+          res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
+        
+     
+
+          //req.session.personName = req.body.personName;
+      //req.session.email = req.body.email;
+      //req.session.usersFriends = [];
+      //req.session.homePosts = [];
+      //req.session.interests = [];
+    
+         // res.redirect('/userHomePage/' + req.session.email + '/' + req.session.personName);
+        }
+    
+     });
     
   });
 });
+
+
 
 app.use(handleError);
 app.use(pageNotFound);
