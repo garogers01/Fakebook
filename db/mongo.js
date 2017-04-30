@@ -29,7 +29,8 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   friends: Array,
-  homePosts: Array
+  homePosts: Array,
+  interests: Array
 });
 
 userSchema.pre('save', function (next) {
