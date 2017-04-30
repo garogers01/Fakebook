@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script type="text/javascript" src="ejs_production.js"></script>
+<div id="first">
+<ul>
+  <li><%- link_to("Home", '/feed/'+email+'/'+personName) %></li>
+  <li><%- link_to("My Profile", '/profile/'+email+'/'+personName) %></li>
+  <li><%- link_to("View Friends", '/friends/'+email+'/'+personName) %></li>
+   <li><a href="/all">View Everyone</a></li>
+   <li><a href="/logout">Logout</a></li>
+   </ul>
+ <h1>Welcome, <%= personName %>!</h1>
+ </div>

@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script type="text/javascript" src="ejs_production.js"></script>
+<div id="first">
+<ul>
+  <li><%- link_to("Home", '/feed/'+email+'/'+personName) %></li>
+  <li><%- link_to("My Profile", '/profile/'+email+'/'+personName) %></li>
+  <li><%- link_to("View Friends", '/friends/'+email+'/'+personName) %></li>
+   <li><a href="/all">View Everyone</a></li>
+   <li><a href="/logout">Logout</a></li>
+   </ul>
+<h1>My Friends</h1>
+ </div>
+<div id="nav">
+<% for(var i=0; i < allFriends.length; i++) {%>
+	<div class="profile"><%- link_to(allFriends[i].personName, '/profile/'+allFriends[i].email+'/'+allFriends[i].personName) %></div>
+<% } %>
+
+</div>

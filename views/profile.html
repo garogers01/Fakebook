@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<div id="first">
+<ul>
+  <li><%- link_to("Home", '/feed/'+email+'/'+userName) %></li>
+  <li><%- link_to("My Profile", '/profile/'+email+'/'+userName) %></li>
+  <li><%- link_to("View Friends", '/friends/'+email+'/'+userName) %></li>
+   <li><a href="/all">View Everyone</a></li>
+   <li><a href="/logout">Logout</a></li>
+   </ul>
+<h1><%= personName %></h1>
+ </div>
+
+<div id="nav">
+<% if (personEmailName == email) {%>
+<div id="nav2"></div>
+<form method="post">
+  <p>Add Post<br>
+  <textarea name="text"></textarea></p>
+  <p><input type="submit">
+  <% for(var i=0; i < myPosts.length; i++) {%>
+  <div id="array-index-<%= i %>"><%= personName %> posted: <%=  myPosts[i].text %></div>
+<% } %></p>
+</form>
+<% } else if (!isFriends) {%>
+    <form action = "" method = "post">
+        <input type="submit" name="addfriend" value="Add Friend" />
+    </form>
+<% } else { %>
+<form action = "" method = "post">
+        <input type="submit" name="deletefriend" value="Delete Friend" />
+    </form>
+    <% for(var i=0; i < myPosts.length; i++) {%>
+  <div id="array-index-<%= i %>"><%= personName %> posted: <%=  myPosts[i].text %></div>
+<% } %>
+<% } %>
+</div>
