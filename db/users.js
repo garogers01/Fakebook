@@ -16,7 +16,8 @@ module.exports = {
       email: email,
       password: password,
       friends: [],
-      homePosts: []
+      homePosts: [],
+      interests: []
     });
     newUser.save(function (error) {
       callback(error);
@@ -140,6 +141,35 @@ module.exports = {
         }
       }
     }, function (err, result) {
+      if (err) throw err;
+      else {
+        cb(null, result);
+      }
+    });
+  },
+
+   getInterestsOfUser: function (email, cb) {
+    mongo.Users.findOne({
+      email: email
+    }, function (err, user) {
+      if (!user) cb('no user');
+      else {
+        cb(null, user.interests);
+      }
+    });
+  },
+
+  addInterestToUser: function (userEmail, interest, cb) {
+    mongo.Users.update({email: userEmail}, {$addToSet: {interests: interest}}, function (err, result) {
+      if (err) throw err;
+      else {
+        cb(null, result);
+      }
+    });
+  },
+
+  deleteInterestFromUser: function (userEmail, interest, cb) {
+    mongo.Users.update({email: userEmail}, {$pull: {interests: interest}}, function (err, result) {
       if (err) throw err;
       else {
         cb(null, result);

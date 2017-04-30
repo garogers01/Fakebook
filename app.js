@@ -45,6 +45,8 @@ var feedRouter = require('./routes/feed');
 app.use('/', feedRouter);
 var suggestionsRouter = require('./routes/suggestions');
 app.use('/', suggestionsRouter);
+var settingsRouter = require('./routes/settings');
+app.use('/', settingsRouter);
 
 app.get('/userHomePage', function (req, res) {
   if (!req.session.email || req.session.email === '') {
@@ -64,6 +66,7 @@ app.get('/logout', function (req, res) {
   req.session.user = null;
   req.session.allFriends = [];
   req.session.homePosts = [];
+  req.session.interests = [];
   res.render('logout');
 });
 
@@ -83,6 +86,7 @@ app.post('/register', function (req, res) {
       req.session.email = req.body.email;
       req.session.usersFriends = [];
       req.session.homePosts = [];
+      req.session.interests = [];
           req.session.user = user;
           res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
         }

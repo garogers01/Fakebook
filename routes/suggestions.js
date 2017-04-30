@@ -80,7 +80,7 @@ var userFriends = [];
             }
           }
         }
-           if (count >= 2) {
+           if (count >= 1) {
            toSuggest.push({
             personName: notFriends[t].personName,
             email: notFriends[t].email,
