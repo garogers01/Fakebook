@@ -75,7 +75,8 @@ var userFriends = [];
         if (count >= 2) {
            toSuggest.push({
             personName: notFriends[t].personName,
-            email: notFriends[t].email
+            email: notFriends[t].email,
+            number: count
           });
         }
        }

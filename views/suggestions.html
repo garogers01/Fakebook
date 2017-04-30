@@ -13,7 +13,9 @@
  </div>
 <div id="nav">
 <% for(var i=0; i < allSuggestions.length; i++) {%>
-	<div class="profile"><%- link_to(allSuggestions[i].personName, '/profile/'+allSuggestions[i].email+'/'+allSuggestions[i].personName) %></div>
+	<div class="profile"><%- link_to(allSuggestions[i].personName, '/profile/'+allSuggestions[i].email+'/'+allSuggestions[i].personName) %>
+		<%= " has " + allSuggestions[i].number + " mutual friends" %>
+	</div>
 <% } %>
 
 </div>
