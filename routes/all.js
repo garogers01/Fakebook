@@ -12,7 +12,6 @@ router.get('/all/:email/:personName', function (req, res, next) {
     } else {
       req.session.allUsers = users;
       req.session.email = req.params.email;
-      req.session.personName = req.params.personName;
 
       res.render('all', {
         errorMessage: req.session.errorMessage,

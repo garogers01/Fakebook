@@ -12,7 +12,7 @@ router.get('/profile/:email/:personName', function (req, res, next) {
       usersDb.getFriendsOfUser(req.params.email, function (err9, friendsProfile) {
         usersDb.getInterestsOfUser(req.session.email, function (err10, myInterests) {
           usersDb.getInterestsOfUser(req.params.email, function (err11, friendsInterests) {
-        
+        usersDb.getFriendsOfUser(req.session.email, function (err14, friends2) {
 
         req.session.profileFriends = friendsProfile;
         req.session.interests = myInterests;
@@ -20,9 +20,11 @@ router.get('/profile/:email/:personName', function (req, res, next) {
         req.session.usersFriends = friends;
         req.session.isFriends = false;
         var listOfFriends = friends;
-
-        for (var i = 0; i < friends.length; i++) {
-          if (friends[i].email == req.params.email) {
+        if (listOfFriends == undefined) {
+          listOfFriends = friends2;
+        }
+        for (var i = 0; i < listOfFriends.length; i++) {
+          if (listOfFriends[i].email == req.params.email) {
             req.session.isFriends = true;
           }
         }
@@ -36,7 +38,7 @@ router.get('/profile/:email/:personName', function (req, res, next) {
         if (req.session.usersFriends.length == 0) {
           req.session.isFriends == false;
         }
-
+        
         req.session.personName = forUserName.personName;
 
         res.render('profile', {
@@ -55,6 +57,7 @@ router.get('/profile/:email/:personName', function (req, res, next) {
          });
     });
       });
+        });
       });
     });
   });
@@ -70,6 +73,8 @@ router.post('/profile/:email/:personName', function (req, res, next) {
         if (err) {
           res.send('error' + err);
         } else {
+                req.session.email = req.params.email;
+
           req.session.usersFriends = friends;
           res.redirect('/profile/' + req.params.email + '/' + req.params.personName);
         }

@@ -34,7 +34,7 @@ router.post('/settings/:email/:personName', function (req, res, next) {
        if (err) {
         res.send('error' + err);
       } else {
-        
+              req.session.email = req.params.email;
         res.redirect('/settings/' + req.params.email + '/' + req.params.personName);
       }
       });  
