@@ -8,7 +8,7 @@ var checkValidUser = require('../middlewares/checkValidUser');
 router.get('/suggestions/:email/:personName', function(req, res, next) {
   usersDb.getAllUsers(function(err, users) {
     usersDb.getFriendsOfUser(req.params.email, function(err, friends) {
-      
+      req.session.email = req.params.email;
 var userFriends = [];
       if (err) {
 

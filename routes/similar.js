@@ -9,7 +9,7 @@ router.get('/similar/:email/:personName', function(req, res, next) {
   usersDb.getAllUsers(function(err, users) {
     usersDb.getInterestsOfUser(req.params.email, function (err, userInterests) {
     usersDb.getFriendsOfUser(req.params.email, function(err, friends) {
-      
+      req.session.email = req.params.email;
 var userFriends = [];
       if (err) {
 

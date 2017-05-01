@@ -7,6 +7,7 @@ var checkValidUser = require('../middlewares/checkValidUser');
 router.get('/settings/:email/:personName', function (req, res, next) {
 
   usersDb.getInterestsOfUser(req.params.email, function (err, interests) {
+    req.session.email = req.params.email;
     req.session.interests = interests;
       if (!interests || interests === '') {
         req.session.interests = [];

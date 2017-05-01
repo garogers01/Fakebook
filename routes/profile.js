@@ -5,16 +5,15 @@ var usersDb = require('../db/users');
 var checkValidUser = require('../middlewares/checkValidUser');
 
 router.get('/profile/:email/:personName', function (req, res, next) {
-  if (!req.session.errorMessage || req.session.errorMessage === '') {
-    req.session.errorMessage = '';
-  }
 
   userPostsDb.getUserPostsByUser(req.params.email, function (err, allUserPosts) {
+  usersDb.findUser(req.session.email, function (errrr, forUserName) {
+    usersDb.getFriendsOfUser(req.session.email, function (err8, friends) {
+      usersDb.getFriendsOfUser(req.params.email, function (err9, friendsProfile) {
+        usersDb.getInterestsOfUser(req.session.email, function (err10, myInterests) {
+          usersDb.getInterestsOfUser(req.params.email, function (err11, friendsInterests) {
+        
 
-    usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
-      usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
-        usersDb.getInterestsOfUser(req.session.email, function (err, myInterests) {
-          usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
         req.session.profileFriends = friendsProfile;
         req.session.interests = myInterests;
         req.session.friendsInterests = friendsInterests;
@@ -22,8 +21,8 @@ router.get('/profile/:email/:personName', function (req, res, next) {
         req.session.isFriends = false;
         var listOfFriends = friends;
 
-        for (var i = 0; i < listOfFriends.length; i++) {
-          if (listOfFriends[i].email == req.params.email) {
+        for (var i = 0; i < friends.length; i++) {
+          if (friends[i].email == req.params.email) {
             req.session.isFriends = true;
           }
         }
@@ -38,7 +37,7 @@ router.get('/profile/:email/:personName', function (req, res, next) {
           req.session.isFriends == false;
         }
 
-
+        req.session.personName = forUserName.personName;
 
         res.render('profile', {
           errorMessage: req.session.errorMessage,
@@ -55,6 +54,7 @@ router.get('/profile/:email/:personName', function (req, res, next) {
         });
          });
     });
+      });
       });
     });
   });
@@ -103,11 +103,11 @@ router.post('/profile/:email/:personName', function (req, res, next) {
       }
       if (doesNotHaveFriend) {
         usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
-        usersDb.getInterestsOfUser(req.session.email, function (err, myInterests) {
-        usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, friendsInterests, function (err, result) {
-          usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, myInterests, function (err, result) {
-            usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
-              usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
+        usersDb.getInterestsOfUser(req.session.email, function (err1, myInterests) {
+        usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, friendsInterests, function (err2, result) {
+          usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, myInterests, function (err3, result) {
+            usersDb.getFriendsOfUser(req.session.email, function (err4, friends) {
+              usersDb.getFriendsOfUser(req.params.email, function (err5, friendsProfile) {
                 req.session.profileFriends = friendsProfile;
                 req.session.usersFriends = friends;
                 req.session.isFriends = true;
@@ -121,11 +121,11 @@ router.post('/profile/:email/:personName', function (req, res, next) {
         });
       } else {
 
-        usersDb.deleteFriendToUser(req.session.email, req.params.email, req.params.personName, function (err, result) {
-          usersDb.deleteFriendToUser(req.params.email, req.session.email, req.session.personName, function (err, result) {
-            usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
-              usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
-                 usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
+        usersDb.deleteFriendToUser(req.session.email, req.params.email, req.params.personName, function (err7, result) {
+          usersDb.deleteFriendToUser(req.params.email, req.session.email, req.session.personName, function (err9, result) {
+            usersDb.getFriendsOfUser(req.session.email, function (err10, friends) {
+              usersDb.getFriendsOfUser(req.params.email, function (err11, friendsProfile) {
+                 usersDb.getInterestsOfUser(req.params.email, function (err12, friendsInterests) {
                 req.session.profileFriends = friendsProfile;
                 req.session.usersFriends = friends;
                 req.session.isFriends = false;

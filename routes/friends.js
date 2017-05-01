@@ -9,6 +9,7 @@ router.get('/friends/:email/:personName', function (req, res, next) {
   usersDb.getInterestsOfUser(req.params.email, function (err, userInterests) {
   usersDb.getFriendsOfUser(req.params.email, function (err, friends) {
     var userFriends = [];
+    req.session.email = req.params.email;
     if (err) {
 
     } else {
