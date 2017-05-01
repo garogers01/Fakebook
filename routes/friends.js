@@ -17,7 +17,8 @@ router.get('/friends/:email/:personName', function (req, res, next) {
 
         userFriends.push({
           personName: friends[i].personName,
-          email: friends[i].email
+          email: friends[i].email,
+          interests: friends[i].interests
         });
 
 

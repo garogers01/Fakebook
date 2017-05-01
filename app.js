@@ -45,6 +45,8 @@ var feedRouter = require('./routes/feed');
 app.use('/', feedRouter);
 var suggestionsRouter = require('./routes/suggestions');
 app.use('/', suggestionsRouter);
+var similarRouter = require('./routes/similar');
+app.use('/', similarRouter);
 var settingsRouter = require('./routes/settings');
 app.use('/', settingsRouter);
 
