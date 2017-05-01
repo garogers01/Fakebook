@@ -33,7 +33,7 @@ views/suggestions.html
 
 —updated app.js to accommodate all the above changes
 
-##To execute the program:
+###To execute the program:
 1. Have MongoDB installed. If you do not, navigate to https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668 and follow the instructions.
 2. Make sure to have $mongod running in another terminal.
 3. In the terminal, execute the following command-line bash $npm install
