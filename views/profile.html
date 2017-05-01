@@ -23,7 +23,13 @@
   <div id="array-index-<%= i %>"><%= personName %> posted: <%=  myPosts[i].text %></div>
 <% } %></p>
 </form>
-<p>My Friends<br>
+<br>
+<p>My Interests:
+  <% for(var i=0; i < myInterests.length; i++) {%>
+  <div id="array-index-<%= i %>"><%= myInterests[i] %></div>
+<% } %></p>
+<br>
+<p>My Friends:
 <% for(var i=0; i < usersFriends.length; i++) {%>
   <div id="array-index-<%= i %>"><%- link_to(usersFriends[i].personName, '/profile/'+usersFriends[i].email+'/'+usersFriends[i].personName) %></div>
 <% } %></p>
@@ -42,7 +48,16 @@
     <% for(var i=0; i < myPosts.length; i++) {%>
   <div id="array-index-<%= i %>"><%= personName %> posted: <%=  myPosts[i].text %></div>
 <% } %>
-<p><%= personName %>'s Friends<br>
+<br>
+
+<p><%= personName %>'s Interests:
+  <% for(var i=0; i < friendsInterests.length; i++) {%>
+  <div id="array-index-<%= i %>"><%= friendsInterests[i] %></div>
+<% } %></p>
+
+
+<br>
+<p><%= personName %>'s Friends:
 <% for(var i=0; i < profileFriends.length; i++) {%>
   <div id="array-index-<%= i %>"><%- link_to(profileFriends[i].personName, '/profile/'+profileFriends[i].email+'/'+profileFriends[i].personName) %></div>
 <% } %></p>
