@@ -6,8 +6,8 @@
   <li><%- link_to("My Profile", '/profile/'+email+'/'+personName) %></li>
   <li><%- link_to("View Friends", '/friends/'+email+'/'+personName) %></li>
    <li><%- link_to("View Everyone", '/all/'+email+'/'+personName) %></li>
-   <li><%- link_to("View Suggestions", '/suggestions/'+email+'/'+personName) %></li>
-         <li><%- link_to("People With Similar Interests", '/similar/'+email+'/'+personName) %></li>
+   <li><%- link_to("View People with Friends in Common", '/suggestions/'+email+'/'+personName) %></li>
+         <li><%- link_to("People with Similar Interests", '/similar/'+email+'/'+personName) %></li>
     <li><%- link_to("Settings", '/settings/'+email+'/'+personName) %></li>
    <li><a href="/logout">Logout</a></li>
    </ul>
@@ -16,6 +16,19 @@
 <div id="nav">
 <% for(var i=0; i < allFriends.length; i++) {%>
 	<div class="profile"><%- link_to(allFriends[i].personName, '/profile/'+allFriends[i].email+'/'+allFriends[i].personName) %></div>
+<% } %>
+
+</div>
+<div id="nav">
+<br>
+<br>
+<br>
+<div>Interests you might like:</div>
+<br>
+<% for(var i=0; i < allSuggestions.length; i++) {%>
+  <div class="profile">
+    <%= allSuggestions[i].number + " friend(s) like(s) " + allSuggestions[i].interestName %>
+  </div>
 <% } %>
 
 </div>

@@ -77,8 +77,10 @@ router.post('/profile/:email/:personName', function (req, res, next) {
     });
   } else {
     if (req.session.usersFriends.length == 0) {
-      usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, function (err, result) {
-        usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, function (err, result) {
+      usersDb.getInterestsOfUser(req.session.email, function (err, myInterests) {
+          usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
+      usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, friendsInterests, function (err, result) {
+        usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, myInterests, function (err, result) {
           usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
             usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
               req.session.profileFriends = friendsProfile;
@@ -86,6 +88,8 @@ router.post('/profile/:email/:personName', function (req, res, next) {
               req.session.isFriends = true;
               res.redirect('/profile/' + req.params.email + '/' + req.params.personName);
             });
+            });
+        });
           });
         });
       });
@@ -98,15 +102,20 @@ router.post('/profile/:email/:personName', function (req, res, next) {
         }
       }
       if (doesNotHaveFriend) {
-        usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, function (err, result) {
-          usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, function (err, result) {
+        usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
+        usersDb.getInterestsOfUser(req.session.email, function (err, myInterests) {
+        usersDb.addFriendToUser(req.session.email, req.params.email, req.params.personName, friendsInterests, function (err, result) {
+          usersDb.addFriendToUser(req.params.email, req.session.email, req.session.personName, myInterests, function (err, result) {
             usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
               usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
                 req.session.profileFriends = friendsProfile;
                 req.session.usersFriends = friends;
                 req.session.isFriends = true;
+                req.session.friendsInterests = friendsInterests;
                 res.redirect('/profile/' + req.params.email + '/' + req.params.personName);
               });
+              });
+        });
             });
           });
         });
@@ -116,11 +125,14 @@ router.post('/profile/:email/:personName', function (req, res, next) {
           usersDb.deleteFriendToUser(req.params.email, req.session.email, req.session.personName, function (err, result) {
             usersDb.getFriendsOfUser(req.session.email, function (err, friends) {
               usersDb.getFriendsOfUser(req.params.email, function (err, friendsProfile) {
+                 usersDb.getInterestsOfUser(req.params.email, function (err, friendsInterests) {
                 req.session.profileFriends = friendsProfile;
                 req.session.usersFriends = friends;
                 req.session.isFriends = false;
+                req.session.friendsInterests = friendsInterests;
                 res.redirect('/profile/' + req.params.email + '/' + req.params.personName);
               });
+                  });
             });
           });
         });

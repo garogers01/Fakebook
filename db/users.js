@@ -61,14 +61,15 @@ module.exports = {
   },
 
 
-  addFriendToUser: function (userEmail, friendEmail, friendName, cb) {
+  addFriendToUser: function (userEmail, friendEmail, friendName, friendInterests, cb) {
     mongo.Users.update({
       email: userEmail
     }, {
       $push: {
         friends: {
           personName: friendName,
-          email: friendEmail
+          email: friendEmail,
+          interests: friendInterests
         }
       }
     }, function (err, result) {

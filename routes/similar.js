@@ -93,12 +93,12 @@ var userFriends = [];
 
        }
 
-       req.session.allSuggestions = toSuggest;
+       req.session.allSuggestionsSimilar = toSuggest;
        res.render('similar', {
         errorMessage: req.session.errorMessage,
         personName: req.session.personName,
         email: req.session.email,
-        allSuggestions: req.session.allSuggestions
+        allSuggestions: req.session.allSuggestionsSimilar
       });
 
      }
