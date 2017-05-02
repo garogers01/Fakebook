@@ -2,7 +2,7 @@
 
 View my original code that I used as a foundation : [CIS 197 final project](https://github.com/amandaklim/cis197_final_project)
 
-Web application that uses Mongoose, MongoDb, and EJS in Node to make a pseudo social network. 
+Web application that uses Mongoose, MongoDb, and EJS in Node.js to make a pseudo social network. 
 
 
 Users can create accounts with an email and password. Users can login to their respective accounts. They can add and delete friends. Users can view their profiles, view custom home feeds based on their friends, and only view other profiles (posts and interests) of users that they are friends with. 
