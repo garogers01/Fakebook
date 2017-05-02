@@ -46,7 +46,7 @@ Specific additional features implemented for NETS 150 that I did not include in 
 All commits, except the first commit, work on the additional features and are additional code.  
 
 ## To execute the program:
-1. Have MongoDB installed. If you do not, navigate [here](https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668) and follow the instructions.
+1. Have MongoDB installed. If you do not, navigate [here](https://docs.mongodb.com/master/administration/install-community/) and follow the instructions.
 2. Make sure to have `$ mongod` running in another terminal.
 3. In the terminal, execute the following command-line bash `$ npm install` in the root directory of the project.
 4. Next, execute `$ npm start`
