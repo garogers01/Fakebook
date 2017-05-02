@@ -19,11 +19,11 @@ Specific additional features implemented for NETS 150 that I did not include in 
 - routes/settings.js: router for settings; updated get and post requests
 - settings.html: html and ejs for page
 
-2. Show friends on own profile and other’s profiles
+2. Show friends on own profile and other profiles
 - routes/profile.js: updated router; updated get and posts requests
 - profile.html: updated html and ejs for page to show friends
 
-3. Show interests on profile and other’s profiles (can only see interests of other users if friends)
+3. Show interests on own profile and other profiles (can only see interests of other users if friends)
 - routes/profile.js: updated router; updated get and posts requests
 - profile.html: updated html and ejs for page to show interests (only if friends or own profile)
 
