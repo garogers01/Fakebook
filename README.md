@@ -1,6 +1,6 @@
 # Social Network: Fakebook 
 
-View my original code that I used a foundation : [CIS 197 final project](https://github.com/amandaklim/cis197_final_project)
+View my original code that I used as a foundation : [CIS 197 final project](https://github.com/amandaklim/cis197_final_project)
 
 Web application that uses Mongoose, MongoDb, and EJS in Node to make a pseudo social network. 
 
@@ -43,7 +43,7 @@ Specific additional features implemented for NETS 150 that I did not include in 
 
 8. Updated app.js to accommodate all the above changes
 
-All commits besides the first commit work on the additional features and are additional code.  
+All commits, except the first commit, work on the additional features and are additional code.  
 
 ## To execute the program:
 1. Have MongoDB installed. If you do not, navigate to https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668 and follow the instructions.
