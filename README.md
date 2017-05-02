@@ -1,4 +1,4 @@
-# nets150_social_network
+# Social Network: Fakebook 
 
 View my original code that I used a foundation : https://github.com/amandaklim/cis197_final_project
 
@@ -51,7 +51,7 @@ views/friends.html
 
 ## To execute the program:
 1. Have MongoDB installed. If you do not, navigate to https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668 and follow the instructions.
-2. Make sure to have $mongod running in another terminal.
-3. In the terminal, execute the following command-line bash $npm install
-4. Next, execute $npm start
-5. Navigate to http://localhost:3000 on your browser. 
+2. Make sure to have '$mongod' running in another terminal.
+3. In the terminal, execute the following command-line bash '$npm install'
+4. Next, execute '$npm start'
+5. Navigate to 'http://localhost:3000' on your browser. 
