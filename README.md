@@ -13,35 +13,37 @@ Users can create accounts with an email and password. Users can login to their r
 Specific additional features implemented for NETS 150 that I did not include in my CIS 197 project:
 
 
-1.ability to add/delete/store interests
+1. Ability to add/delete/store interests
 - db/mongo.js : updated user schema
 - db/users.js: added methods to update and delete interests
 - routes/settings.js: router for settings
 - settings.html: html and ejs for page
 
-2. show friends on own profile and other’s profiles
+2. Show friends on own profile and other’s profiles
 - routes/profile.js
 - profile.html
 
-3. show interests on profile and other’s profiles (can only see interests of other users if friends)
+3. Show interests on profile and other’s profiles (can only see interests of other users if friends)
 - routes/profile.js
 - profile.html
 
-4. suggest people to add with at least 1 mutual friends (triadic closure)
+4. Suggest people to add with at least 1 mutual friends (triadic closure)
 - routes/suggestions.js
 - views/suggestions.html
 
-5. suggest people to add with at least 1 similar interests (triadic closure)
+5. Suggest people to add with at least 1 similar interests (triadic closure)
 - routes/similar.js
 - views/similar.html
 
-6.suggest interests to add based off of friends' interests (triadic closure)
+6.Suggest interests to add based off of friends' interests (triadic closure)
 - routes/friends.js
 - views/friends.html
 
-7. added error checking to send appropriate error messages
+7. Added error checking to send appropriate error messages
 
-8. updated app.js to accommodate all the above changes
+8. Updated app.js to accommodate all the above changes
+
+All commits besides the first commit work on the additional features and are additional code.  
 
 ## To execute the program:
 1. Have MongoDB installed. If you do not, navigate to https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668 and follow the instructions.
