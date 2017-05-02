@@ -15,29 +15,29 @@ Specific additional features implemented for NETS 150 that I did not include in 
 
 1. Ability to add/delete/store interests
 - db/mongo.js : updated user schema
-- db/users.js: added methods to update and delete interests
-- routes/settings.js: router for settings
+- db/users.js: added methods to update, delete, and get interests of users
+- routes/settings.js: router for settings; updated get and post requests
 - settings.html: html and ejs for page
 
 2. Show friends on own profile and other’s profiles
-- routes/profile.js
-- profile.html
+- routes/profile.js: updated router; updated gets and posts requests
+- profile.html: updated html and ejs for page to show friends
 
 3. Show interests on profile and other’s profiles (can only see interests of other users if friends)
-- routes/profile.js
-- profile.html
+- routes/profile.js: updated router; updated gets and posts requests
+- profile.html: updated html and ejs for page to show interests (only if friends or own profile)
 
 4. Suggest people to add with at least 1 mutual friends (triadic closure)
-- routes/suggestions.js
-- views/suggestions.html
+- routes/suggestions.js: added new router; implemented get request to show people (that user is not friends with) to add based off of mutual friends
+- views/suggestions.html: html and ejs for page
 
 5. Suggest people to add with at least 1 similar interests (triadic closure)
-- routes/similar.js
-- views/similar.html
+- routes/similar.js: added new router: implemented get request to show people (that user is not friends with) to add based off interests
+- views/similar.html: html and ejs for page
 
-6.Suggest interests to add based off of friends' interests (triadic closure)
-- routes/friends.js
-- views/friends.html
+6. Suggest interests to add based off of friends' interests (triadic closure)
+- routes/friends.js: updated router; updated get request to show suggested interests (interests that user has not added) based off friends
+- views/friends.html: updated html and ejs for page
 
 7. Added error checking to send appropriate error messages
 
