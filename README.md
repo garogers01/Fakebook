@@ -20,11 +20,11 @@ Specific additional features implemented for NETS 150 that I did not include in 
 - settings.html: html and ejs for page
 
 2. Show friends on own profile and other’s profiles
-- routes/profile.js: updated router; updated gets and posts requests
+- routes/profile.js: updated router; updated get and posts requests
 - profile.html: updated html and ejs for page to show friends
 
 3. Show interests on profile and other’s profiles (can only see interests of other users if friends)
-- routes/profile.js: updated router; updated gets and posts requests
+- routes/profile.js: updated router; updated get and posts requests
 - profile.html: updated html and ejs for page to show interests (only if friends or own profile)
 
 4. Suggest people to add with at least 1 mutual friends (triadic closure)
@@ -32,7 +32,7 @@ Specific additional features implemented for NETS 150 that I did not include in 
 - views/suggestions.html: html and ejs for page
 
 5. Suggest people to add with at least 1 similar interests (triadic closure)
-- routes/similar.js: added new router: implemented get request to show people (that user is not friends with) to add based off interests
+- routes/similar.js: added new router; implemented get request to show people (that user is not friends with) to add based off interests
 - views/similar.html: html and ejs for page
 
 6. Suggest interests to add based off of friends' interests (triadic closure)
@@ -46,8 +46,8 @@ Specific additional features implemented for NETS 150 that I did not include in 
 All commits, except the first commit, work on the additional features and are additional code.  
 
 ## To execute the program:
-1. Have MongoDB installed. If you do not, navigate to https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668 and follow the instructions.
+1. Have MongoDB installed. If you do not, navigate [here](https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/?_ga=1.250858244.360716299.1493541668) and follow the instructions.
 2. Make sure to have `$ mongod` running in another terminal.
-3. In the terminal, execute the following command-line bash `$ npm install`
+3. In the terminal, execute the following command-line bash `$ npm install` in the root directory of the project.
 4. Next, execute `$ npm start`
 5. Navigate to `http://localhost:3000` on your browser. 
