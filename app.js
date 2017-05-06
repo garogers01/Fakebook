@@ -12,7 +12,7 @@ app.engine('html', require('ejs').__express);
 app.set('view engine', 'html');
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('index');
 });
 
@@ -51,22 +51,22 @@ var settingsRouter = require('./routes/settings');
 app.use('/', settingsRouter);
 
 app.get('/userHomePage/:email/:personName', function (req, res) {
-      User.findUser(req.body.email, function (err2, user) {
-        if (err2) {
-          res.send('error' + err2);
-        } else {
-          if (!req.session.email || req.session.email === '') {
-    res.send('You tried to access a protected page');
-  }
-          req.session.personName = req.body.personName;
+  User.findUser(req.body.email, function (err2, user) {
+    if (err2) {
+      res.send('error' + err2);
+    } else {
+      if (!req.session.email || req.session.email === '') {
+        res.send('You tried to access a protected page');
+      }
+      req.session.personName = req.body.personName;
       req.session.email = req.body.email;
       req.session.usersFriends = [];
       req.session.homePosts = [];
       req.session.interests = [];
-          req.session.user = user;
-          res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
-        }
-      });
+      req.session.user = user;
+      res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
+    }
+  });
 
 
 });
@@ -88,34 +88,26 @@ app.get('/register', function (req, res) {
 
 app.post('/register', function (req, res) {
   User.findUser(req.body.email, function (err2, user) {
-  User.addUser(req.body.personName, req.body.email, req.body.password, function (err) {
-    
-   
-        if (err) {
-          res.send('Unable to register user');
-        } else {
-             
-          req.session.personName = req.body.personName;
-      req.session.email = req.body.email;
-      req.session.usersFriends = [];
-      req.session.homePosts = [];
-      req.session.interests = [];
-          req.session.user = user;
-          res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
-        
-     
+    User.addUser(req.body.personName, req.body.email, req.body.password, function (err) {
 
-          //req.session.personName = req.body.personName;
-      //req.session.email = req.body.email;
-      //req.session.usersFriends = [];
-      //req.session.homePosts = [];
-      //req.session.interests = [];
-    
-         // res.redirect('/userHomePage/' + req.session.email + '/' + req.session.personName);
-        }
-    
-     });
-    
+
+      if (err) {
+        res.send('Unable to register user');
+      } else {
+
+        req.session.personName = req.body.personName;
+        req.session.email = req.body.email;
+        req.session.usersFriends = [];
+        req.session.homePosts = [];
+        req.session.interests = [];
+        req.session.user = user;
+        res.redirect('/feed/' + req.session.email + '/' + req.session.personName);
+
+
+      }
+
+    });
+
   });
 });
 
