@@ -17,10 +17,6 @@ router.get('/friends/:email/:personName', function (req, res, next) {
 
 
       for (var i = 0; i < friends.length; i++) {
-        /*var theInterestsOfFriend = [];
-        for (var b = 0; b < friends[i].interests.length; b++) {
-          theInterestsOfFriend.push(friends[b]);
-        }*/
         userFriends.push({
           personName: friends[i].personName,
           email: friends[i].email,
