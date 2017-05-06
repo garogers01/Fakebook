@@ -5,7 +5,8 @@
   <li><%- link_to("Home", '/feed/'+email+'/'+personName) %></li>
   <li><%- link_to("My Profile", '/profile/'+email+'/'+personName) %></li>
   <li><%- link_to("View Friends", '/friends/'+email+'/'+personName) %></li>
-   <li><a href="/all">View Everyone</a></li>
+      <li><%- link_to("View Everyone", '/all/'+email+'/'+personName) %></li>
+
    <li><a href="/logout">Logout</a></li>
    </ul>
  <h1>Welcome, <%= personName %>!</h1>

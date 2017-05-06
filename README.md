@@ -15,7 +15,7 @@ Specific additional features implemented for NETS 150 that I did not include in 
 1. Ability to add/delete/store interests
 - db/mongo.js : updated user schema
 - db/users.js: added methods to update, delete, and get interests of users
-- routes/settings.js: router for settings; updated get and post requests
+- routes/settings.js: created router for settings; created get and post requests
 - settings.html: html and ejs for page
 
 2. Show friends on own profile and other profiles

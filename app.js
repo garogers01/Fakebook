@@ -92,7 +92,7 @@ app.post('/register', function (req, res) {
     
    
         if (err) {
-          res.send('error' + err);
+          res.send('Unable to register user');
         } else {
              
           req.session.personName = req.body.personName;
