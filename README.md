@@ -105,6 +105,6 @@ Web application that uses Mongoose, MongoDb, and EJS in Node.js and Express.js t
 
 <img width="756" alt="picture15" src="https://user-images.githubusercontent.com/22601709/27989748-8daf1008-640d-11e7-9be4-53c62222b814.png">
 
-16. When you click “Logout” you are taken to the following page where you can login or create account.
+16. When you click “Logout” you are taken to the following page where you can login or create an account.
 
 <img width="763" alt="picture16" src="https://user-images.githubusercontent.com/22601709/27989750-8db2b366-640d-11e7-9597-70485ddad7ae.png">
