@@ -11,11 +11,11 @@ Web application that uses Mongoose, MongoDb, and EJS in Node.js and Express.js t
 3. Add and delete friends
 
 4. Add posts 
-- Can add post on home feed or add post when on one's own profile
+- Can add post on home feed or add post when on user's own profile
 
 5. Add and delete interests
 
-6. View one's own profile
+6. View user's own profile
 - Shows user's friends, list of user's posts, and list of user's interests
 - Ability to add post
 
