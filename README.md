@@ -2,42 +2,38 @@
 
 Web application that uses Mongoose, MongoDb, and EJS in Node.js and Express.js to make a pseudo social network. 
 
+## Features
 
-Users can create accounts with an email and password and can login to their respective accounts. They can add and delete friends. They also have the ability to add posts and add interests. Users can view their own profiles, view custom home feeds based on their friends, and only view other profiles (posts and interests) of users that they are friends with. Users can view friend suggestions and interest suggestions. 
+1. Create an account with an email and password
 
-## New Features
+2. Log in to an existing account with the appropriate email and password
 
-1. Ability to add/delete/store interests
-- db/mongo.js : updated user schema
-- db/users.js: added methods to update, delete, and get interests of users
-- routes/settings.js: created router for settings; created get and post requests
-- settings.html: html and ejs for page
+3. Add and delete friends
 
-2. Show friends on own profile and other profiles
-- routes/profile.js: updated router; updated get and posts requests
-- profile.html: updated html and ejs for page to show friends
+4. Add posts 
+- Can add post on home feed or add post when on one's own profile
 
-3. Show interests on own profile and other profiles (can only see interests of other users if friends)
-- routes/profile.js: updated router; updated get and posts requests
-- profile.html: updated html and ejs for page to show interests (only if friends or own profile)
+5. Add and delete interests
 
-4. Suggest people to add with at least 1 mutual friends 
-- routes/suggestions.js: added new router; implemented get request to show people (that user is not friends with) to add based off of mutual friends
-- views/suggestions.html: html and ejs for page
+6. View one's own profile
+- Shows user's friends, list of user's posts, and list of user's interests
+- Ability to add post
 
-5. Suggest people to add with at least 1 similar interests
-- routes/similar.js: added new router; implemented get request to show people (that user is not friends with) to add based off interests
-- views/similar.html: html and ejs for page
+7. View a custom home feed based on friends
+- Has user's own posts and friends' posts
+- Ability to add post
 
-6. Suggest interests to add based off of friends' interests
-- routes/friends.js: updated router; updated get request to show suggested interests (interests that user has not added) based off friends
-- views/friends.html: updated html and ejs for page
+8. Only view the profiles of friends 
+- Can view friends, posts, and interests of a friend's profile
+- When accessing a profile of someone a user is not friends with, the user may only view a list of friends
 
-7. Added error checking to send appropriate error messages
+9. Friend suggestions
+- Shows number of mutual friends and/or number of interests in common
+- Based on number of mutual friends and/or number of interests in common
 
-8. Updated app.js to accommodate all the above changes
-
-All commits, except the first commit, work on the additional features and are additional code.  
+10. Interests suggestions
+- Shows number of friends that like each interest suggestion
+- Based on friends' interests
 
 
 ## To execute the program:
