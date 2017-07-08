@@ -36,9 +36,14 @@ Web application that uses Mongoose, MongoDb, and EJS in Node.js and Express.js t
 - Based on friends' interests
 
 
-## To execute the program:
+## To execute the program
 1. Have MongoDB installed. If you do not, navigate [here](https://docs.mongodb.com/master/administration/install-community/) and follow the instructions.
 2. Make sure to have `$ mongod` running in another terminal.
 3. In another window of the terminal, execute the following command-line bash `$ npm install` in the root directory of the project.
 4. Next, execute `$ npm start`
 5. Navigate to `http://localhost:3000` on your browser. 
+
+## User Manual
+
+1. Main page that appears when you first navigate to http://localhost:3000
+https://user-images.githubusercontent.com/22601709/27988832-7d096fa4-63fa-11e7-8e76-8be7a5420451.png
