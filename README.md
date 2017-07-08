@@ -46,4 +46,4 @@ Web application that uses Mongoose, MongoDb, and EJS in Node.js and Express.js t
 ## User Manual
 
 1. Main page that appears when you first navigate to http://localhost:3000
-https://user-images.githubusercontent.com/22601709/27988832-7d096fa4-63fa-11e7-8e76-8be7a5420451.png
+![picture1](https://user-images.githubusercontent.com/22601709/27988832-7d096fa4-63fa-11e7-8e76-8be7a5420451.png)
